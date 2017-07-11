@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.jaxws.iutservice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.jaxws.iutservice" xmlns:intf="http://service.jaxws.iutservice" xmlns:tns1="http://beans.jaxws.iutservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.jaxws.iutservice" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.jaxws.iutservice"/>
+   <element name="isOpen">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="isOpenResponse">
+    <complexType>
+     <sequence>
+      <element name="isOpenReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCompany">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCompanyResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteCompanyReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCompany">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCompanyResponse">
+    <complexType>
+     <sequence>
+      <element name="getCompanyReturn" type="tns1:Company"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllCompanies">
+    <complexType/>
+   </element>
+   <element name="getAllCompaniesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllCompaniesReturn" type="tns1:Company"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCompany">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="hourOpening" type="xsd:string"/>
+      <element name="hourClosing" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCompanyResponse">
+    <complexType>
+     <sequence>
+      <element name="addCompanyReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCompanyByName">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCompanyByNameResponse">
+    <complexType>
+     <sequence>
+      <element name="getCompanyByNameReturn" type="tns1:Company"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans.jaxws.iutservice" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Company">
+    <sequence>
+     <element name="hourClosing" nillable="true" type="xsd:string"/>
+     <element name="hourOpening" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addCompanyRequest">
+
+      <wsdl:part element="impl:addCompany" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCompanyResponse">
+
+      <wsdl:part element="impl:addCompanyResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCompanyByNameResponse">
+
+      <wsdl:part element="impl:getCompanyByNameResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCompanyByNameRequest">
+
+      <wsdl:part element="impl:getCompanyByName" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isOpenRequest">
+
+      <wsdl:part element="impl:isOpen" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="isOpenResponse">
+
+      <wsdl:part element="impl:isOpenResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCompanyResponse">
+
+      <wsdl:part element="impl:getCompanyResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCompanyRequest">
+
+      <wsdl:part element="impl:getCompany" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllCompaniesRequest">
+
+      <wsdl:part element="impl:getAllCompanies" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteCompanyResponse">
+
+      <wsdl:part element="impl:deleteCompanyResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteCompanyRequest">
+
+      <wsdl:part element="impl:deleteCompany" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllCompaniesResponse">
+
+      <wsdl:part element="impl:getAllCompaniesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CompanyServiceImpl">
+
+      <wsdl:operation name="isOpen">
+
+         <wsdl:input message="impl:isOpenRequest" name="isOpenRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:isOpenResponse" name="isOpenResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCompany">
+
+         <wsdl:input message="impl:deleteCompanyRequest" name="deleteCompanyRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteCompanyResponse" name="deleteCompanyResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCompany">
+
+         <wsdl:input message="impl:getCompanyRequest" name="getCompanyRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCompanyResponse" name="getCompanyResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllCompanies">
+
+         <wsdl:input message="impl:getAllCompaniesRequest" name="getAllCompaniesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllCompaniesResponse" name="getAllCompaniesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCompany">
+
+         <wsdl:input message="impl:addCompanyRequest" name="addCompanyRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addCompanyResponse" name="addCompanyResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCompanyByName">
+
+         <wsdl:input message="impl:getCompanyByNameRequest" name="getCompanyByNameRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCompanyByNameResponse" name="getCompanyByNameResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CompanyServiceImplSoapBinding" type="impl:CompanyServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="isOpen">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="isOpenRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="isOpenResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCompany">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteCompanyRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteCompanyResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCompany">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCompanyRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCompanyResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllCompanies">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllCompaniesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllCompaniesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addCompany">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addCompanyRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addCompanyResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCompanyByName">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCompanyByNameRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCompanyByNameResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CompanyServiceImplService">
+
+      <wsdl:port binding="impl:CompanyServiceImplSoapBinding" name="CompanyServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/IUT-SOAP/services/CompanyServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

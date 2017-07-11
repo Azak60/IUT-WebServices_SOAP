@@ -1,0 +1,53 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CompanyServiceImplService WSDL service -->
+
+  <service name="CompanyServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.jaxws.iutservice"/>
+      <parameter name="wsdlServiceElement" value="CompanyServiceImplService"/>
+      <parameter name="schemaQualified" value="http://beans.jaxws.iutservice,http://service.jaxws.iutservice"/>
+      <parameter name="wsdlServicePort" value="CompanyServiceImpl"/>
+      <parameter name="className" value="iutservice.jaxws.service.CompanyServiceImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="CompanyServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="isOpen" qname="operNS:isOpen" xmlns:operNS="http://service.jaxws.iutservice" returnQName="retNS:isOpenReturn" xmlns:retNS="http://service.jaxws.iutservice" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://service.jaxws.iutservice" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="deleteCompany" qname="operNS:deleteCompany" xmlns:operNS="http://service.jaxws.iutservice" returnQName="retNS:deleteCompanyReturn" xmlns:retNS="http://service.jaxws.iutservice" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://service.jaxws.iutservice" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getCompany" qname="operNS:getCompany" xmlns:operNS="http://service.jaxws.iutservice" returnQName="retNS:getCompanyReturn" xmlns:retNS="http://service.jaxws.iutservice" returnType="rtns:Company" xmlns:rtns="http://beans.jaxws.iutservice" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://service.jaxws.iutservice" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAllCompanies" qname="operNS:getAllCompanies" xmlns:operNS="http://service.jaxws.iutservice" returnQName="retNS:getAllCompaniesReturn" xmlns:retNS="http://service.jaxws.iutservice" returnType="rtns:Company" xmlns:rtns="http://beans.jaxws.iutservice" soapAction="" >
+      </operation>
+      <operation name="addCompany" qname="operNS:addCompany" xmlns:operNS="http://service.jaxws.iutservice" returnQName="retNS:addCompanyReturn" xmlns:retNS="http://service.jaxws.iutservice" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://service.jaxws.iutservice" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:hourOpening" xmlns:pns="http://service.jaxws.iutservice" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:hourClosing" xmlns:pns="http://service.jaxws.iutservice" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getCompanyByName" qname="operNS:getCompanyByName" xmlns:operNS="http://service.jaxws.iutservice" returnQName="retNS:getCompanyByNameReturn" xmlns:retNS="http://service.jaxws.iutservice" returnType="rtns:Company" xmlns:rtns="http://beans.jaxws.iutservice" soapAction="" >
+        <parameter qname="pns:name" xmlns:pns="http://service.jaxws.iutservice" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="deleteCompany isOpen getCompany getAllCompanies addCompany getCompanyByName"/>
+
+      <typeMapping
+        xmlns:ns="http://beans.jaxws.iutservice"
+        qname="ns:Company"
+        type="java:iutservice.jaxws.beans.Company"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
